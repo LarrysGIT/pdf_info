@@ -1,9 +1,6 @@
-# pdfsize
+# pdf_page_size
 
 A recent issue needs to find out system generated pdf page sizes.
-
-PDF pts convert to mm/inchs
-`https://stackoverflow.com/questions/34545339/the-size-of-pdf-documents-how-do-i-convert-from-millimeters-to-pixels-using-spi`
 
 ```powershell
 > # load the class
@@ -29,3 +26,7 @@ PdfFile Pages
 ------- -----
         {@{Width=210.016; Height=14.788}, @{Width=210.016; Height=14.788}}
 ```
+
+# Convert PDF pts to mm/inchs
+
+`https://stackoverflow.com/questions/34545339/the-size-of-pdf-documents-how-do-i-convert-from-millimeters-to-pixels-using-spi`
