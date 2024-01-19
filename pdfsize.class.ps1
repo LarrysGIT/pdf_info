@@ -13,7 +13,7 @@ class PdfInfo {
     }
 
     hidden GetPdfPageSizes([byte[]]$PdfBytes) {
-        $PageSizesMatches = [regex]::Matches(([system.text.encoding]::UTF8.GetString($PdfBytes)), "MediaBox *\[[\d.]+? +?[\d.]+? +?(.+?) .+?(.+?)\]")
+        $PageSizesMatches = [regex]::Matches(([system.text.encoding]::UTF8.GetString($PdfBytes)), "MediaBox *\[[\d\.]+? +?[\d\.]+? +?([\d\.]+?) +?([\d\.]+?)\]")
         for($i = 0; $i -lt $PageSizesMatches.Count; $i++)
         {
             $this.Pages.Add((
