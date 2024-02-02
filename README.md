@@ -1,10 +1,10 @@
-# pdf_page_size
+# pdf_info
 
-A recent issue needs to find out system generated pdf page sizes/fonts
+An recent business issue needs to find out system generated pdf page sizes/fonts in a quick and easy way
 
 ```powershell
 > # load the class
-> . ".\pdfsize.class.ps1"
+> . ".\pdfinfo.class.ps1"
 >
 > # load from pdf file
 > $pdfinfo = [PdfInfo]::new(".\test.pdf")
