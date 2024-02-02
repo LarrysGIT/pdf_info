@@ -1,6 +1,6 @@
 # pdf_page_size
 
-A recent issue needs to find out system generated pdf page sizes.
+A recent issue needs to find out system generated pdf page sizes/fonts
 
 ```powershell
 > # load the class
@@ -8,6 +8,15 @@ A recent issue needs to find out system generated pdf page sizes.
 >
 > # load from pdf file
 > $pdfinfo = [PdfInfo]::new(".\test.pdf")
+> $pdfinfo.GetPdfFontsInfo()
+> $pdfinfo.Fonts
+>
+> $pdfinfo.GetPdfPagesInfo()
+> $pdfinfo.Pages
+>
+> $pdfinfo.GetPdfDescriptionInfo()
+> $pdfinfo.Descriptions
+>
 > $pdfinfo
 
 PdfFile                                        Pages
