@@ -1,6 +1,8 @@
 
 class PdfInfo {
     $PdfFile
+    $PdfVersion
+    $IsLastLineEOF
     $PdfInternalObjects = [ordered]@{}
     $Descriptions = (New-Object System.Collections.ArrayList)
     $Fonts = (New-Object System.Collections.ArrayList)
@@ -29,6 +31,10 @@ class PdfInfo {
         foreach($trailer in $TrailerMatches) {
             $this.PdfInternalObjects["Trailers"].Add($trailer.Groups[1].Value) | Out-Null
         }
+        # Pdf version
+        $this.PdfVersion = [regex]::Match($PdfAsText.Substring(0, 20), "^%PDF-(.+?)[\r\n]").Groups[1].Value
+        # Pdf file last line should ends with %%EOF
+        $this.IsLastLineEOF = $PdfAsText -imatch "[\r\n]%%EOF[\r\n]*$"
     }
 
     GetPdfDescriptionInfo() {
@@ -182,7 +188,7 @@ class PdfInfo {
 }
 
 <#
-$pdfinfo = [pdfinfo]::new("$PWD\1.pdf")
+$pdfinfo = [pdfinfo]::new("$PWD\test.pdf")
 $pdfinfo.GetPdfDescriptionInfo()
 $pdfinfo.GetPdfFontsInfo()
 $pdfinfo.GetPdfPagesInfo()
