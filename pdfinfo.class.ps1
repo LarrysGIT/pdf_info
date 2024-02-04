@@ -98,7 +98,7 @@ class PdfInfo {
                     $Page.Id = $i
                     $i++
                     switch -regex ($this.PdfInternalObjects[$obj] -ireplace "[\r\n]", " ") {
-                        "/MediaBox *\[ *[\d\.]+? +?[\d\.]+? +?([\d\.]+?) +?([\d\.]+?) *\]" {
+                        "/MediaBox *\[ *[-\d\.]+? +?[-\d\.]+? +?([-\d\.]+?) +?([-\d\.]+?) *\]" {
                             $Page.Width.mm = [math]::Round([decimal]$Matches[1]/72*25.4, 3)
                             $Page.Width.pts = [math]::Round([decimal]$Matches[1], 3)
                             $Page.Width.inch = [math]::Round([decimal]$Matches[1]/72, 3)
